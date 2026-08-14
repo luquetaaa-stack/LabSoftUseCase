@@ -14,6 +14,9 @@ public partial class DbTasksContext : DbContext
         : base(options)
     {
     }
+    public virtual DbSet<Departamento> Departamentos { get; set; }
+
+    public virtual DbSet<CentralCusto> CentralCustos { get; set; }
 
     public virtual DbSet<Funcionario> Funcionarios { get; set; }
 
