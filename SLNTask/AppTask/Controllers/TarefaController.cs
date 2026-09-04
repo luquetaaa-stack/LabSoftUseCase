@@ -24,9 +24,10 @@ namespace AppTask.Controllers
             var dbTasksContext = _context.Tarefas.Include(t => t.Funcionario);
             return View(await dbTasksContext.ToListAsync());
         }
-        public async Task<IActionResult> Sobre()
-        {
 
+        // GET: Tarefa/Sobre
+        public IActionResult Sobre()
+        {
             return View();
         }
 
@@ -52,8 +53,9 @@ namespace AppTask.Controllers
         // GET: Tarefa/Create
         public IActionResult Create()
         {
-            ViewData["ListaFuncionario"] = new SelectList(_context.Funcionarios, "Codigo", "Nome");
-
+            ViewData["FuncionarioId"] = new SelectList(_context.Funcionarios, "Codigo", "Nome");
+            ViewData["StatusTarefa"] = StatusOptions();
+            ViewData["Prazo"] = PrazoOptions();
             return View();
         }
 
@@ -70,7 +72,9 @@ namespace AppTask.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ListaFuncionario"] = new SelectList(_context.Funcionarios, "Codigo", "Nome", tarefa.FuncionarioId);
+            ViewData["FuncionarioId"] = new SelectList(_context.Funcionarios, "Codigo", "Nome", tarefa.FuncionarioId);
+            ViewData["StatusTarefa"] = StatusOptions();
+            ViewData["Prazo"] = PrazoOptions();
             return View(tarefa);
         }
 
@@ -87,7 +91,9 @@ namespace AppTask.Controllers
             {
                 return NotFound();
             }
-            ViewData["CodigoFuncionario"] = new SelectList(_context.Funcionarios, "Codigo", "Nome", tarefa.FuncionarioId);
+            ViewData["FuncionarioId"] = new SelectList(_context.Funcionarios, "Codigo", "Nome", tarefa.FuncionarioId);
+            ViewData["StatusTarefa"] = StatusOptions();
+            ViewData["Prazo"] = PrazoOptions();
             return View(tarefa);
         }
 
@@ -96,7 +102,7 @@ namespace AppTask.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Codigo,Descricao,DataPlanejada,DataIniciada,DataFinalizada,DataCancelada,StatusTarefa,Prazo,CodigoFuncionario")] Tarefa tarefa)
+        public async Task<IActionResult> Edit(int id, [Bind("Codigo,Descricao,DataPlanejada,DataIniciada,DataFinalizada,DataCancelada,StatusTarefa,Prazo,FuncionarioId")] Tarefa tarefa)
         {
             if (id != tarefa.Codigo)
             {
@@ -123,7 +129,9 @@ namespace AppTask.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CodigoFuncionario"] = new SelectList(_context.Funcionarios, "Codigo", "Nome", tarefa.FuncionarioId);
+            ViewData["FuncionarioId"] = new SelectList(_context.Funcionarios, "Codigo", "Nome", tarefa.FuncionarioId);
+            ViewData["StatusTarefa"] = StatusOptions();
+            ViewData["Prazo"] = PrazoOptions();
             return View(tarefa);
         }
 
@@ -164,6 +172,18 @@ namespace AppTask.Controllers
         private bool TarefaExists(int id)
         {
             return _context.Tarefas.Any(e => e.Codigo == id);
+        }
+
+        private static SelectList StatusOptions()
+        {
+            var status = new[] { "Pendente", "Em andamento", "Concluída", "Cancelada" };
+            return new SelectList(status);
+        }
+
+        private static SelectList PrazoOptions()
+        {
+            var prazos = new[] { "Em dia", "Em atraso" };
+            return new SelectList(prazos);
         }
     }
 }
