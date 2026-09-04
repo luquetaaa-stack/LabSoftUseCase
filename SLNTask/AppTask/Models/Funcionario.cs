@@ -15,7 +15,7 @@ public partial class Funcionario
 
     public int? GerenteId { get; set; }
 
-    public virtual Departamento Departamento { get; set; } = null!;
+    public virtual Departamento? Departamento { get; set; } = null!;
 
     public virtual Funcionario? Gerente { get; set; }
 
