@@ -1,0 +1,557 @@
+/* =========================================================
+   CLÍNICA VIDA & SAÚDE
+   Design moderno para ASP.NET Core MVC
+   ========================================================= */
+
+:root {
+    --primary: #087f8c;
+    --primary-dark: #05636d;
+    --secondary: #20b486;
+    --accent: #5eead4;
+    --background: #f4f8fb;
+    --surface: #ffffff;
+    --text: #172b4d;
+    --muted: #718096;
+    --border: #e2e8f0;
+    --success: #16a34a;
+    --warning: #f59e0b;
+    --danger: #dc2626;
+    --radius: 16px;
+    --shadow: 0 10px 30px rgba(15, 45, 65, .08);
+}
+
+/* =========================================================
+   BASE
+   ========================================================= */
+
+html {
+    font-size: 14px;
+    min-height: 100%;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: radial-gradient( circle at top right, rgba(32, 180, 134, .08), transparent 35% ), var(--background);
+    color: var(--text);
+}
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: .2s ease;
+}
+
+    a:hover {
+        color: var(--primary-dark);
+    }
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+.navbar {
+    background: rgba(255, 255, 255, .94) !important;
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(226, 232, 240, .8);
+    box-shadow: 0 4px 20px rgba(15, 45, 65, .05);
+}
+
+.navbar-brand {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--primary) !important;
+    letter-spacing: -.4px;
+}
+
+    .navbar-brand::before {
+        content: "?";
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        margin-right: 9px;
+        color: white;
+        background: linear-gradient( 135deg, var(--primary), var(--secondary) );
+        border-radius: 10px;
+        font-size: 16px;
+    }
+
+.nav-link {
+    color: #526277 !important;
+    font-weight: 600;
+    padding: .65rem .9rem !important;
+    border-radius: 10px;
+    transition: .2s ease;
+}
+
+    .nav-link:hover {
+        color: var(--primary) !important;
+        background: #edfafa;
+    }
+
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+
+main.container {
+    padding-top: 32px;
+    padding-bottom: 50px;
+}
+
+/* =========================================================
+   TITULOS
+   ========================================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    color: var(--text);
+    font-weight: 750;
+    letter-spacing: -.4px;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.65rem;
+}
+
+h3 {
+    font-size: 1.4rem;
+}
+
+/* =========================================================
+   CARDS
+   ========================================================= */
+
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+    .card:hover {
+        box-shadow: 0 15px 35px rgba(15, 45, 65, .11);
+    }
+
+.card-header {
+    border-bottom: 1px solid var(--border);
+    background: #fff;
+    font-weight: 700;
+    padding: 18px 22px;
+}
+
+.card-body {
+    padding: 24px;
+}
+
+/* =========================================================
+   BOTÕES
+   ========================================================= */
+
+.btn {
+    border-radius: 10px;
+    font-weight: 650;
+    padding: .65rem 1.15rem;
+    border: none;
+    transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+}
+
+    .btn:hover {
+        transform: translateY(-1px);
+    }
+
+.btn-primary {
+    color: white;
+    background: linear-gradient( 135deg, var(--primary), var(--secondary) );
+    box-shadow: 0 6px 15px rgba(8, 127, 140, .2);
+}
+
+    .btn-primary:hover {
+        color: white;
+        background: linear-gradient( 135deg, var(--primary-dark), #159b73 );
+        box-shadow: 0 9px 20px rgba(8, 127, 140, .28);
+    }
+
+.btn-success {
+    background: var(--success);
+    color: white;
+}
+
+.btn-danger {
+    background: var(--danger);
+    color: white;
+}
+
+.btn-warning {
+    background: var(--warning);
+    color: white;
+}
+
+.btn-outline-primary {
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    background: transparent;
+}
+
+    .btn-outline-primary:hover {
+        color: white;
+        background: var(--primary);
+    }
+
+/* =========================================================
+   FORMULÁRIOS
+   ========================================================= */
+
+.form-label {
+    font-weight: 650;
+    color: #34445b;
+    margin-bottom: 7px;
+}
+
+.form-control,
+.form-select {
+    min-height: 46px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: .65rem .85rem;
+    color: var(--text);
+    background-color: #fff;
+    transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+    .form-control:focus,
+    .form-select:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(8, 127, 140, .12);
+        outline: none;
+    }
+
+    .form-control::placeholder {
+        color: #a0aec0;
+    }
+
+/* =========================================================
+   TABELAS
+   ========================================================= */
+
+.table {
+    margin-bottom: 0;
+    vertical-align: middle;
+}
+
+    .table thead th {
+        background: #f7fafc;
+        color: #526277;
+        font-size: .78rem;
+        text-transform: uppercase;
+        letter-spacing: .5px;
+        font-weight: 750;
+        border-bottom: 1px solid var(--border);
+        padding: 14px 16px;
+    }
+
+    .table tbody td {
+        padding: 15px 16px;
+        border-color: #edf2f7;
+        color: #34445b;
+    }
+
+    .table tbody tr {
+        transition: background .15s ease;
+    }
+
+        .table tbody tr:hover {
+            background: #f7fbfc;
+        }
+
+/* =========================================================
+   BADGES / STATUS
+   ========================================================= */
+
+.badge {
+    border-radius: 999px;
+    padding: .45rem .7rem;
+    font-weight: 700;
+}
+
+    .badge.bg-success {
+        background: #dcfce7 !important;
+        color: #166534;
+    }
+
+    .badge.bg-warning {
+        background: #fef3c7 !important;
+        color: #92400e;
+    }
+
+    .badge.bg-danger {
+        background: #fee2e2 !important;
+        color: #991b1b;
+    }
+
+    .badge.bg-primary {
+        background: #dff7fa !important;
+        color: #05636d;
+    }
+
+/* =========================================================
+   ALERTAS
+   ========================================================= */
+
+.alert {
+    border: none;
+    border-radius: 12px;
+    padding: 14px 17px;
+    box-shadow: 0 5px 15px rgba(15, 45, 65, .05);
+}
+
+/* =========================================================
+   LOGIN
+   ========================================================= */
+
+.login-page {
+    min-height: calc(100vh - 100px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 15px;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 430px;
+}
+
+.login-card {
+    border: none;
+    border-radius: 22px;
+    box-shadow: 0 25px 70px rgba(15, 45, 65, .12);
+    overflow: hidden;
+}
+
+.login-header {
+    text-align: center;
+    color: white;
+    padding: 38px 30px;
+    background: linear-gradient( 135deg, var(--primary), var(--secondary) );
+}
+
+.login-logo {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    background: rgba(255,255,255,.16);
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 18px;
+    font-size: 28px;
+}
+
+.login-header h1,
+.login-header h2,
+.login-header h3,
+.login-header h4 {
+    color: white;
+    margin-bottom: 5px;
+}
+
+.login-header p {
+    margin: 0;
+    opacity: .85;
+}
+
+.login-body {
+    padding: 32px;
+    background: white;
+}
+
+.login-footer {
+    margin-top: 20px;
+    text-align: center;
+    color: var(--muted);
+    font-size: .9rem;
+}
+
+/* =========================================================
+   DASHBOARD
+   ========================================================= */
+
+.dashboard-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.dashboard-card {
+    padding: 22px;
+    border-radius: 16px;
+    background: white;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+}
+
+    .dashboard-card .icon {
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 13px;
+        color: white;
+        background: linear-gradient( 135deg, var(--primary), var(--secondary) );
+        font-size: 20px;
+    }
+
+    .dashboard-card .number {
+        margin-top: 15px;
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: var(--text);
+    }
+
+    .dashboard-card .label {
+        color: var(--muted);
+        font-weight: 600;
+    }
+
+/* =========================================================
+   PÁGINAS CRUD
+   ========================================================= */
+
+.page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+    .page-header p {
+        margin: 4px 0 0;
+        color: var(--muted);
+    }
+
+/* =========================================================
+   DETALHES
+   ========================================================= */
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+    .detail-row:last-child {
+        border-bottom: none;
+    }
+
+.detail-label {
+    color: var(--muted);
+    font-weight: 600;
+}
+
+.detail-value {
+    color: var(--text);
+    font-weight: 650;
+    text-align: right;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+    border-top: 1px solid var(--border);
+    background: rgba(255,255,255,.7);
+    color: var(--muted);
+    padding: 20px 0;
+    margin-top: 40px;
+}
+
+    footer a {
+        font-weight: 600;
+    }
+
+/* =========================================================
+   VALIDAÇÃO
+   ========================================================= */
+
+.field-validation-error,
+.validation-summary-errors {
+    color: var(--danger);
+    font-size: .85rem;
+    font-weight: 600;
+}
+
+.input-validation-error {
+    border-color: var(--danger) !important;
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, .08) !important;
+}
+
+/* =========================================================
+   RESPONSIVIDADE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    main.container {
+        padding-top: 20px;
+    }
+
+    .page-header,
+    .dashboard-title {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .table-responsive {
+        border-radius: 12px;
+    }
+
+    .login-body {
+        padding: 25px 20px;
+    }
+
+    .login-header {
+        padding: 30px 20px;
+    }
+}
+
+/* =========================================================
+   ANIMAÇÕES
+   ========================================================= */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card,
+.dashboard-card,
+.login-card {
+    animation: fadeUp .35s ease both;
+}

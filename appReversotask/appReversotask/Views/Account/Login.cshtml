@@ -1,0 +1,99 @@
+﻿@model appReversotask.Models.LoginViewModel
+
+@{
+    ViewData["Title"] = "Acesso ao Sistema";
+}
+
+<div class="login-page">
+
+    <div class="login-container">
+
+        <div class="login-card">
+
+            <div class="login-header">
+
+                <div class="login-logo">
+                    ✚
+                </div>
+
+                <h3>Vida & Saúde</h3>
+
+                <p>Acesso do paciente</p>
+
+            </div>
+
+            <div class="login-body">
+
+                <div class="text-center mb-4">
+                    <h4>Bem-vindo!</h4>
+
+                    <p class="text-muted mb-0">
+                        Entre com seu CPF para acessar suas consultas.
+                    </p>
+                </div>
+
+                <form asp-action="Login" method="post">
+
+                    <div asp-validation-summary="ModelOnly"
+                         class="alert alert-danger"
+                         role="alert">
+                    </div>
+
+                    <div class="mb-4">
+
+                        <label asp-for="Cpf" class="form-label">
+                            CPF
+                        </label>
+
+                        <input asp-for="Cpf"
+                               class="form-control"
+                               placeholder="111.222.333-44"
+                               autocomplete="off" />
+
+                        <span asp-validation-for="Cpf"
+                              class="text-danger">
+                        </span>
+
+                    </div>
+
+                    <button type="submit"
+                            class="btn btn-primary w-100">
+
+                        Entrar na minha conta
+
+                    </button>
+
+                </form>
+
+                <div class="login-footer">
+
+                    Ainda não possui cadastro?
+
+                    <a asp-controller="Paciente"
+                       asp-action="Create">
+
+                        Criar cadastro
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="text-center mt-3">
+            <small class="text-muted">
+                © @DateTime.Now.Year Vida & Saúde
+            </small>
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
